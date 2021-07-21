@@ -5,7 +5,7 @@
  * Make sure to inspect the output below.  Do not ignore changes!
  */
 'use strict'
-exports[`test/lib/config.js TAP config edit --global > should write global config file 1`] = `
+exports[`test/lib/config.js TAP config edit --location=global > should write global config file 1`] = `
 ;;;;
 ; npm globalconfig file: /etc/npmrc
 ; this is a simple ini-formatted file
@@ -88,10 +88,13 @@ exports[`test/lib/config.js TAP config edit > should write config file 2`] = `
 exports[`test/lib/config.js TAP config get no args > should list configs on config get no args 1`] = `
 ; "cli" config from command line options
 
-editor = "vi"
-global = false
-json = false
-long = false
+cat = true 
+chai = true 
+dog = true 
+editor = "vi" 
+json = false 
+location = "user"
+long = false 
 
 ; node bin location = /path/to/node
 ; cwd = {CWD}
@@ -102,26 +105,32 @@ long = false
 exports[`test/lib/config.js TAP config list --long > should list all configs 1`] = `
 ; "default" config from default values
 
-init-author-name = ""
-init-version = "1.0.0"
-init.author.name = ""
-init.version = "1.0.0"
+init-author-name = "" 
+init-version = "1.0.0" 
+init.author.name = "" 
+init.version = "1.0.0" 
 
 ; "cli" config from command line options
 
-editor = "vi"
-global = false
-json = false
+cat = true 
+chai = true 
+dog = true 
+editor = "vi" 
+json = false 
+location = "user"
 long = true
 `
 
 exports[`test/lib/config.js TAP config list > should list configs 1`] = `
 ; "cli" config from command line options
 
-editor = "vi"
-global = false
-json = false
-long = false
+cat = true 
+chai = true 
+dog = true 
+editor = "vi" 
+json = false 
+location = "user"
+long = false 
 
 ; node bin location = /path/to/node
 ; cwd = {CWD}
@@ -132,11 +141,14 @@ long = false
 exports[`test/lib/config.js TAP config list overrides > should list overridden configs 1`] = `
 ; "cli" config from command line options
 
-editor = "vi"
-global = false
-init.author.name = "Bar"
-json = false
-long = false
+cat = true 
+chai = true 
+dog = true 
+editor = "vi" 
+init.author.name = "Bar" 
+json = false 
+location = "user"
+long = false 
 
 ; "user" config from ~/.npmrc
 

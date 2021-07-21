@@ -26,10 +26,10 @@ All commands:
     edit, exec, explain, explore, find-dupes, fund, get, help,
     hook, init, install, install-ci-test, install-test, link,
     ll, login, logout, ls, org, outdated, owner, pack, ping,
-    prefix, profile, prune, publish, rebuild, repo, restart,
-    root, run-script, search, set, set-script, shrinkwrap, star,
-    stars, start, stop, team, test, token, uninstall, unpublish,
-    unstar, update, version, view, whoami
+    pkg, prefix, profile, prune, publish, rebuild, repo,
+    restart, root, run-script, search, set, set-script,
+    shrinkwrap, star, stars, start, stop, team, test, token,
+    uninstall, unpublish, unstar, update, version, view, whoami
 
 Specify configs in the ini-formatted file:
     {CWD}/smoke-tests/tap-testdir-index/.npmrc
@@ -107,11 +107,11 @@ index v1.0.4..v1.1.1 100644
 +
 +Copyright Isaac Z. Schlueter and Contributors
  All rights reserved.
-
+ 
  Permission is hereby granted, free of charge, to any person
 diff --git a/lib/abbrev.js b/lib/abbrev.js
 deleted file mode 100644
-index v1.0.4..v1.1.1
+index v1.0.4..v1.1.1 
 --- a/lib/abbrev.js
 +++ b/lib/abbrev.js
 @@ -1,111 +0,0 @@
@@ -229,7 +229,7 @@ index v1.0.4..v1.1.1
 / No newline at end of file
 diff --git a/abbrev.js b/abbrev.js
 new file mode 100644
-index v1.0.4..v1.1.1
+index v1.0.4..v1.1.1 
 --- a/abbrev.js
 +++ b/abbrev.js
 @@ -0,0 +1,61 @@
@@ -405,7 +405,7 @@ exports[`smoke-tests/index.js TAP npm install dev dep > should have expected dev
 
 exports[`smoke-tests/index.js TAP npm install dev dep > should have expected dev dep added reify output 1`] = `
 
-added 1 package
+added 1 package 
 
 1 package is looking for funding
   run \`npm fund\` for details
@@ -414,7 +414,7 @@ added 1 package
 
 exports[`smoke-tests/index.js TAP npm install prodDep@version > should have expected install reify output 1`] = `
 
-added 1 package
+added 1 package 
 
 `
 
@@ -479,6 +479,89 @@ project@1.0.0 {CWD}/smoke-tests/tap-testdir-index/project
 exports[`smoke-tests/index.js TAP npm outdated > should have expected outdated output 1`] = `
 Package  Current  Wanted  Latest  Location             Depended by
 abbrev     1.0.4   1.1.1   1.1.1  node_modules/abbrev  project
+
+`
+
+exports[`smoke-tests/index.js TAP npm pkg > should have expected npm pkg delete modified package.json result 1`] = `
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo /"Error: no test specified/" && exit 1",
+    "hello": "echo Hello"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "abbrev": "^1.0.4"
+  }
+}
+
+`
+
+exports[`smoke-tests/index.js TAP npm pkg > should have expected npm pkg set modified package.json result 1`] = `
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo /"Error: no test specified/" && exit 1",
+    "hello": "echo Hello"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "abbrev": "^1.0.4"
+  },
+  "tap": {
+    "test-env": [
+      "LC_ALL=sk"
+    ]
+  }
+}
+
+`
+
+exports[`smoke-tests/index.js TAP npm pkg > should have expected pkg delete output 1`] = `
+
+`
+
+exports[`smoke-tests/index.js TAP npm pkg > should have expected pkg get output 1`] = `
+"ISC"
+
+`
+
+exports[`smoke-tests/index.js TAP npm pkg > should have expected pkg set output 1`] = `
+
+`
+
+exports[`smoke-tests/index.js TAP npm pkg > should print package.json contents 1`] = `
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "",
+  "ma",
+  "scripts": {
+    "test": "echo /"Error: no test specified/" && exit 1",
+    "hello": "echo Hello"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "abbrev": "^1.0.4"
+  },
+  "tap": {
+    "test-env": [
+      "LC_ALL=sk"
+    ]
+  }
+}
 
 `
 
@@ -576,7 +659,7 @@ exports[`smoke-tests/index.js TAP npm uninstall > should have expected uninstall
 
 exports[`smoke-tests/index.js TAP npm uninstall > should have expected uninstall reify output 1`] = `
 
-removed 1 package
+removed 1 package 
 
 `
 
@@ -654,7 +737,7 @@ exports[`smoke-tests/index.js TAP npm update dep > should have expected update p
 
 exports[`smoke-tests/index.js TAP npm update dep > should have expected update reify output 1`] = `
 
-changed 1 package
+changed 1 package 
 
 1 package is looking for funding
   run \`npm fund\` for details
